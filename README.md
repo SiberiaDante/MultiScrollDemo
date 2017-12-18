@@ -1,0 +1,2 @@
+# MultiScrollDemo
+使用NestedScrollView+ViewPager+RecyclerView+SmartRefreshLayout打造酷炫下拉视差效果并解决各种滑动冲突
