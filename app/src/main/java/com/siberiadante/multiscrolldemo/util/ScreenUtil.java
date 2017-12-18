@@ -16,15 +16,6 @@ import android.view.WindowManager;
 public class ScreenUtil {
 
     /**
-     * 获取屏幕的高度（单位：px）
-     *
-     * @return 屏幕高
-     */
-    public static int getScreenHeight(Context context) {
-        return context.getResources().getDisplayMetrics().heightPixels;
-    }
-
-    /**
      * @return 获取屏幕的高 单位：px
      */
     public static int getScreenHeightPx(Context context) {

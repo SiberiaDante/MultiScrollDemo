@@ -57,12 +57,7 @@ public class QuestionFragment extends LazyFragment {
             questionBean.setContent("使用NestedScrollView+ViewPager+RecyclerView+SmartRefreshLayout打造酷炫下拉视差效果并解决各种滑动冲突" + i);
             data.add(questionBean);
         }
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
-//        linearLayoutManager.setSmoothScrollbarEnabled(true);
-//        linearLayoutManager.setAutoMeasureEnabled(true);
-//        recyclerView.setHasFixedSize(true);
-//        recyclerView.setNestedScrollingEnabled(false);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(mActivity));
         recyclerView.addItemDecoration(new NormalDecoration(ContextCompat.getColor(mActivity, R.color.mainGrayF8), (int) mActivity.getResources().getDimension(R.dimen.eight)));
 
         adapter = new MineQuestionAdapter(mActivity);
