@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MultiScrollDemo</string>
+    <string name="sign">签到</string>
+    <string name="integral">积分</string>
+    <string name="Japanese_currency">日币</string>
+    <string name="friendliness">友好度</string>
+    <string name="prestige">威望</string>
+    <string name="edit">编辑</string>
+    <string name="interest_label">兴趣标签</string>
+
+    <string name="follow">关注</string>
+    <string name="edit_information">编辑资料</string>
+    <string name="fans">粉丝</string>
+    <string name="no_answer_get_first_answer">还没有人回答，抢一楼~</string>
+    <string name="answer">答</string>
+    <string name="no_more">没有更多了</string>
+    <string name="more_loading">更多加载中...</string>
+</resources>

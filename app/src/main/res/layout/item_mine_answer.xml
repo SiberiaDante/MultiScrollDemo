@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingEnd="@dimen/sixteen"
+    android:paddingStart="@dimen/sixteen">
+
+    <LinearLayout
+        android:id="@+id/ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <me.codeboy.android.aligntextview.AlignTextView
+            android:id="@+id/tv_title"
+            style="@style/QuestionTitleTextView"
+            android:text="使用NestedScrollView+ViewPager+RecyclerView+SmartRefreshLayout打造酷炫下拉视差效果并解决各种滑动冲突"
+           />
+
+        <TextView
+            android:id="@+id/tv_answer_num"
+            style="@style/QuestionAnswerTextView"
+            android:text="回答6" />
+    </LinearLayout>
+
+    <me.codeboy.android.aligntextview.AlignTextView
+       style="@style/QuestionDescriptionTextView"
+        android:text="使用NestedScrollView+ViewPager+RecyclerView+SmartRefreshLayout打造酷炫下拉视差效果并解决各种滑动冲突"
+        />
+
+
+</LinearLayout>

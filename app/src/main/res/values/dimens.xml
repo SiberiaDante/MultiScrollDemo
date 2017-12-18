@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--basic font size-->
+    <dimen name="font_11">11sp</dimen>
+    <dimen name="font_12">12sp</dimen>
+    <dimen name="font_13">13sp</dimen>
+    <dimen name="font_14">14sp</dimen>
+    <dimen name="font_15">15sp</dimen>
+    <dimen name="font_16">16sp</dimen>
+    <dimen name="font_17">17sp</dimen>
+    <dimen name="font_18">18sp</dimen>
+    <!--<dimen name="font_19">19sp</dimen>-->
+    <!--<dimen name="font_20">20sp</dimen>-->
+    <dimen name="font_21">21sp</dimen>
+    <dimen name="font_22">22sp</dimen>
+    <dimen name="font_36">36sp</dimen>
+    <!--basic spacing size-->
+
+    <!---->
+    <dimen name="zero">0dp</dimen>
+    <dimen name="one_point_five">0.5dp</dimen>
+    <dimen name="one">1dp</dimen>
+    <dimen name="two">2dp</dimen>
+    <dimen name="three">3dp</dimen>
+    <dimen name="four">4dp</dimen>
+    <dimen name="five">5dp</dimen>
+    <dimen name="six">6dp</dimen>
+    <dimen name="seven">7dp</dimen>
+    <dimen name="eight">8dp</dimen>
+    <dimen name="nine">9dp</dimen>
+    <dimen name="ten">10dp</dimen>
+    <dimen name="twelve">12dp</dimen>
+    <dimen name="fourteen">14dp</dimen>
+    <dimen name="fifteen">15dp</dimen>
+    <dimen name="sixteen">16dp</dimen>
+    <dimen name="eighteen">18dp</dimen>
+    <dimen name="nineteen">19dp</dimen>
+    <dimen name="twenty">20dp</dimen>
+    <dimen name="twenty_five">25dp</dimen>
+    <dimen name="thirty_two">32dp</dimen>
+    <dimen name="thirty_eight">38dp</dimen>
+    <dimen name="forty_five">45dp</dimen>
+    <dimen name="forty_eight">48dp</dimen>
+    <dimen name="fifty">50dp</dimen>
+    <dimen name="fifty_four">54dp</dimen>
+    <dimen name="sixty_three">63dp</dimen>
+    <dimen name="eleven">11dp</dimen>
+    <dimen name="thirteen">13dp</dimen>
+    <dimen name="forty_two">42dp</dimen>
+    <dimen name="seventeen">17dp</dimen>
+    <dimen name="twenty_one">21dp</dimen>
+</resources>

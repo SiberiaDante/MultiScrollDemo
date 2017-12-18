@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_marginBottom="@dimen/sixteen"
+    android:layout_marginTop="@dimen/twenty"
+    android:background="@color/mainGrayF8"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/rl_item_image"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
+        android:layout_margin="@dimen/eight">
+
+        <ImageView
+            android:id="@+id/iv_show"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/timg" />
+
+        <TextView
+            android:id="@+id/tv_first_letter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="A"
+            android:textColor="@color/mainBlack"
+            android:textSize="@dimen/font_36" />
+    </RelativeLayout>
+
+     <me.codeboy.android.aligntextview.AlignTextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="@dimen/seven"
+        android:maxLines="2"
+        android:text="使用NestedScrollView+ViewPager+RecyclerView+SmartRefreshLayout打造酷炫下拉视差效果并解决各种滑动冲突"
+        android:textColor="@color/mainBlack"
+        android:textSize="@dimen/font_15" />
+
+</LinearLayout>

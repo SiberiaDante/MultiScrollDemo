@@ -1,0 +1,173 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Toolbar" parent="Widget.AppCompat.ActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
+
+    <style name="CustomLabelBlack">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@drawable/stroke_black</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">@dimen/six</item>
+        <item name="android:paddingEnd">@dimen/six</item>
+        <item name="android:paddingTop">@dimen/zero</item>
+        <item name="android:paddingBottom">@dimen/one</item>
+        <item name="android:layout_marginEnd">@dimen/eight</item>
+        <item name="android:textSize">@dimen/font_11</item>
+        <item name="android:textColor">@color/mainBlack</item>
+    </style>
+    <style name="CustomLabelBlueBg">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@color/mainBlue</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">@dimen/four</item>
+        <item name="android:paddingBottom">@dimen/one</item>
+        <item name="android:paddingEnd">@dimen/four</item>
+        <item name="android:layout_marginEnd">@dimen/eight</item>
+        <item name="android:textSize">@dimen/font_11</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/mainWhite</item>
+    </style>
+
+    <style name="CustomLabelBlueGenderStroke">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/eight</item>
+        <item name="android:background">@drawable/stroke_blue</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawablePadding">@dimen/five</item>
+        <item name="android:paddingStart">@dimen/six</item>
+        <item name="android:paddingEnd">@dimen/six</item>
+        <item name="android:paddingTop">@dimen/zero</item>
+        <item name="android:paddingBottom">@dimen/one</item>
+        <item name="android:textSize">@dimen/font_11</item>
+        <item name="android:textColor">@color/mainBlue</item>
+    </style>
+
+
+    <style name="LineOneVertical">
+        <item name="android:layout_width">@dimen/one</item>
+        <item name="android:background">@color/mainBlack5B</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="LineEight">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/mainGrayF0</item>
+        <item name="android:layout_height">@dimen/eight</item>
+    </style>
+
+    <style name="LineOnePointFive">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/mainGrayF0</item>
+        <item name="android:layout_height">@dimen/one_point_five</item>
+    </style>
+
+    <style name="UserCenterIntegralTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">@dimen/nine</item>
+        <item name="android:textColor">@color/mainBlack</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/font_12</item>
+    </style>
+
+    <style name="UserCenterIntegralNumTextView">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/sixteen</item>
+        <item name="android:textColor">@color/mainRed</item>
+        <item name="android:textSize">@dimen/font_14</item>
+    </style>
+    <!--User center label-->
+    <style name="UserCenterLabel">
+        <item name="android:background">@drawable/shape_gray_3</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/eight</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">@dimen/four</item>
+        <item name="android:paddingTop">@dimen/four</item>
+        <item name="android:paddingStart">@dimen/eight</item>
+        <item name="android:paddingEnd">@dimen/eight</item>
+        <item name="android:textColor">@color/mainBlack</item>
+        <item name="android:textSize">@dimen/font_12</item>
+    </style>
+
+    <style name="UserTitleAvatar">
+        <item name="android:layout_width">@dimen/thirty_two</item>
+        <item name="android:layout_height">@dimen/thirty_two</item>
+        <item name="android:layout_marginEnd">@dimen/five</item>
+    </style>
+    <style name="QuestionTitleTextView">
+        <item name="android:layout_marginTop">@dimen/nineteen</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/forty_eight</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:lineSpacingExtra">@dimen/eight</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:textSize">@dimen/font_17</item>
+        <item name="android:textColor">@color/mainBlack</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="QuestionAnswerTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/mainGrayC6</item>
+        <item name="android:textSize">@dimen/font_12</item>
+    </style>
+
+    <style name="QuestionDescriptionTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:lineSpacingExtra">@dimen/ten</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/twenty_one</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/mainGrayC6</item>
+    </style>
+
+    <style name="AnswerSingleTextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:textColor">@color/mainGrayC6</item>
+    </style>
+    <style name="AnswerTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">@dimen/nine</item>
+        <item name="android:background">@color/mainBlack</item>
+        <item name="android:padding">@dimen/two</item>
+        <item name="android:text">@string/answer</item>
+        <item name="android:textColor">@color/mainWhite</item>
+    </style>
+
+    <style name="AnswerNoneTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/mainGray88</item>
+        <item name="android:textSize">@dimen/font_14</item>
+        <item name="android:text">@string/no_answer_get_first_answer</item>
+    </style>
+</resources>

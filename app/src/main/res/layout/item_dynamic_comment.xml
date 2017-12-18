@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/mainWhite"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_item_time" />
+
+    <me.codeboy.android.aligntextview.AlignTextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/thirteen"
+        android:layout_marginTop="@dimen/twenty"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="使用NestedScrollView+ViewPager+RecyclerView+SmartRefreshLayout打造酷炫下拉视差效果并解决各种滑动冲突"
+        android:textColor="@color/mainBlack"
+        android:textSize="@dimen/font_15" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mainGrayF8"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/thirteen"
+        android:paddingEnd="@dimen/seventeen"
+        android:paddingStart="@dimen/seventeen"
+        android:paddingTop="@dimen/thirteen">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SiberiaDante："
+            android:textColor="@color/mainBlue"
+            android:textSize="@dimen/font_12" />
+
+        <me.codeboy.android.aligntextview.AlignTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/eleven"
+            android:text="使用NestedScrollView+ViewPager+RecyclerView+SmartRefreshLayout打造酷炫下拉视差效果并解决各种滑动冲突" />
+    </LinearLayout>
+
+</LinearLayout>
