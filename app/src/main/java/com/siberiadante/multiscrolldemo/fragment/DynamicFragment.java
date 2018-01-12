@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -75,6 +76,12 @@ public class DynamicFragment extends LazyFragment {
         recyclerView.setAdapter(adapter);
         adapter.addAll(data);
         adapter.setNoMore(R.layout.view_no_more);
+        adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Toast.makeText(mActivity, "---position---" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
         adapter.setMore(R.layout.view_more, new RecyclerArrayAdapter.OnMoreListener() {
             @Override
             public void onMoreShow() {

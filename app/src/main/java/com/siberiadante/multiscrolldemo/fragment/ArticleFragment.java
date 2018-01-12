@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.siberiadante.multiscrolldemo.R;
@@ -62,6 +63,12 @@ public class ArticleFragment extends LazyFragment {
         adapter = new MineArticleAdapter(mActivity);
         recyclerView.setAdapter(adapter);
         adapter.addAll(data);
+        adapter.setOnItemClickListener(new RecyclerArrayAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Toast.makeText(mActivity, "---position---" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
         adapter.setNoMore(R.layout.view_no_more);
         adapter.setMore(R.layout.view_more, new RecyclerArrayAdapter.OnMoreListener() {
             @Override
