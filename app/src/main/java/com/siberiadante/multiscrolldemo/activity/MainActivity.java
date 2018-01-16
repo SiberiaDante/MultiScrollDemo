@@ -317,17 +317,13 @@ public class MainActivity extends BaseActivity {
     private ContentObserver mNavigationStatusObserver = new ContentObserver(new Handler()) {
         @Override
         public void onChange(boolean selfChange) {
-            int navigationBarIsMin = Settings.System.getInt(getContentResolver(),
-                    "navigationbar_is_min", 0);
-            if (navigationBarIsMin == 1) {
-                dealWithViewPager();
-                Log.d(TAG, "onChange: ------------------导航键隐藏了");
-                dealWihtHuaWei();
-            } else {
-                dealWithViewPager();
-                Log.d(TAG, "onChange: ------------------导航键显示了");
-                dealWihtHuaWei();
-            }
+            dealWithHuaWei();
+//            int navigationBarIsMin = Settings.System.getInt(getContentResolver(), "navigationbar_is_min", 0);
+//            if (navigationBarIsMin == 1) {
+//                Log.d(TAG, "onChange: ------------------导航键隐藏了");
+//            } else {
+//                Log.d(TAG, "onChange: ------------------导航键显示了");
+//            }
         }
     };
 
@@ -338,20 +334,19 @@ public class MainActivity extends BaseActivity {
         viewPager.setLayoutParams(params);
     }
 
-    private void dealWihtHuaWei() {
+    private void dealWithHuaWei() {
         flActivity.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                int heightDiff = flActivity.getRootView().getHeight() - flActivity.getHeight();
-                Log.d(TAG, "----------------heightDiff------------:" + heightDiff);
-                toolBarPositionY = toolbar.getHeight();
-                ViewGroup.LayoutParams params = viewPager.getLayoutParams();
-                params.height = ScreenUtil.getScreenHeightPx(getApplicationContext()) - toolBarPositionY - magicIndicator.getHeight() + 1;
-                viewPager.setLayoutParams(params);
+                dealWithViewPager();
                 flActivity.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+//                int heightDiff = flActivity.getRootView().getHeight() - flActivity.getHeight();
+//                Log.d(TAG, "----------------heightDiff------------:" + heightDiff);
+//                toolBarPositionY = toolbar.getHeight();
+//                ViewGroup.LayoutParams params = viewPager.getLayoutParams();
+//                params.height = ScreenUtil.getScreenHeightPx(getApplicationContext()) - toolBarPositionY - magicIndicator.getHeight() + 1;
+//                viewPager.setLayoutParams(params);
             }
         });
-
-
     }
 }

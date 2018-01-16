@@ -5,3 +5,6 @@
 
 #### 详细说明：[博客地址:http://www.cnblogs.com/shen-hua/p/8052459.html](http://www.cnblogs.com/shen-hua/p/8052459.html)
 实现了大概功能，没有过分的优化
+
+## 优化修复
+* 华为虚拟键显示隐藏会导致测量的屏幕宽高发生变化，已修复并做了优化处理
