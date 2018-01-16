@@ -1,6 +1,9 @@
 package com.siberiadante.multiscrolldemo.activity;
 
 import android.content.Context;
+import android.database.ContentObserver;
+import android.os.Handler;
+import android.provider.Settings;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -12,8 +15,10 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,6 +31,7 @@ import com.siberiadante.multiscrolldemo.adapter.ComFragmentAdapter;
 import com.siberiadante.multiscrolldemo.fragment.ArticleFragment;
 import com.siberiadante.multiscrolldemo.fragment.DynamicFragment;
 import com.siberiadante.multiscrolldemo.fragment.QuestionFragment;
+import com.siberiadante.multiscrolldemo.util.DeviceUtil;
 import com.siberiadante.multiscrolldemo.util.ScreenUtil;
 import com.siberiadante.multiscrolldemo.util.StatusBarUtil;
 import com.siberiadante.multiscrolldemo.view.ColorFlipPagerTitleView;
@@ -116,11 +122,15 @@ public class MainActivity extends BaseActivity {
     MagicIndicator magicIndicator;
     @BindView(R.id.magic_indicator_title)
     MagicIndicator magicIndicatorTitle;
+    @BindView(R.id.fl_activity)
+    FrameLayout flActivity;
+
     private int mOffset = 0;
     private int mScrollY = 0;
     int toolBarPositionY = 0;
     private String[] mTitles = new String[]{"动态", "文章", "问答"};
     private List<String> mDataList = Arrays.asList(mTitles);
+
 
     @Override
     public int setLayoutId() {
@@ -156,18 +166,15 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+        if (DeviceUtil.isHUAWEI() && DeviceUtil.checkDeviceHasNavigationBar(this.getApplicationContext())) {
+            getContentResolver().registerContentObserver(Settings.System.getUriFor
+                    ("navigationbar_is_min"), true, mNavigationStatusObserver);
+            Log.d(TAG, "initView: -------------huawei-----------------");
+        }
         toolbar.post(new Runnable() {
             @Override
             public void run() {
-                toolBarPositionY = toolbar.getHeight();
-                Log.d(TAG, "----------------toolBarPositionY------------:" + toolBarPositionY);
-                ViewGroup.LayoutParams params = viewPager.getLayoutParams();
-//                int screenHeight = getApplicationContext().getResources().getDisplayMetrics().widthPixels;
-                int screenHeight = ScreenUtil.getScreenHeightPx(getApplicationContext());
-                params.height = ScreenUtil.getScreenHeightPx(getApplicationContext()) - toolBarPositionY - magicIndicator.getHeight() + 1;
-                Log.d(TAG, "----------------screenHeight------------:" + screenHeight);
-                Log.d(TAG, "----------------magicIndicator.getHeight()------------:" + magicIndicator.getHeight());
-                viewPager.setLayoutParams(params);
+                dealWithViewPager();
             }
         });
         scrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
@@ -177,18 +184,14 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
                 int[] location = new int[2];
                 magicIndicator.getLocationOnScreen(location);
-                int xPosition = location[0];
                 int yPosition = location[1];
                 if (yPosition < toolBarPositionY) {
                     magicIndicatorTitle.setVisibility(View.VISIBLE);
                     scrollView.setNeedScroll(false);
-                    Log.d(TAG, "---------magicIndicatorTitle----:" + false);
                 } else {
                     magicIndicatorTitle.setVisibility(View.GONE);
-                    Log.d(TAG, "---------magicIndicatorTitle----:" + true);
                     scrollView.setNeedScroll(true);
 
                 }
@@ -308,6 +311,47 @@ public class MainActivity extends BaseActivity {
         });
         magicIndicatorTitle.setNavigator(commonNavigator);
         ViewPagerHelper.bind(magicIndicatorTitle, viewPager);
+
+    }
+
+    private ContentObserver mNavigationStatusObserver = new ContentObserver(new Handler()) {
+        @Override
+        public void onChange(boolean selfChange) {
+            int navigationBarIsMin = Settings.System.getInt(getContentResolver(),
+                    "navigationbar_is_min", 0);
+            if (navigationBarIsMin == 1) {
+                dealWithViewPager();
+                Log.d(TAG, "onChange: ------------------导航键隐藏了");
+                dealWihtHuaWei();
+            } else {
+                dealWithViewPager();
+                Log.d(TAG, "onChange: ------------------导航键显示了");
+                dealWihtHuaWei();
+            }
+        }
+    };
+
+    private void dealWithViewPager() {
+        toolBarPositionY = toolbar.getHeight();
+        ViewGroup.LayoutParams params = viewPager.getLayoutParams();
+        params.height = ScreenUtil.getScreenHeightPx(getApplicationContext()) - toolBarPositionY - magicIndicator.getHeight() + 1;
+        viewPager.setLayoutParams(params);
+    }
+
+    private void dealWihtHuaWei() {
+        flActivity.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int heightDiff = flActivity.getRootView().getHeight() - flActivity.getHeight();
+                Log.d(TAG, "----------------heightDiff------------:" + heightDiff);
+                toolBarPositionY = toolbar.getHeight();
+                ViewGroup.LayoutParams params = viewPager.getLayoutParams();
+                params.height = ScreenUtil.getScreenHeightPx(getApplicationContext()) - toolBarPositionY - magicIndicator.getHeight() + 1;
+                viewPager.setLayoutParams(params);
+                flActivity.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        });
+
 
     }
 }
