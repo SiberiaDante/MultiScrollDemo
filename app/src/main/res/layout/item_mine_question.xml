@@ -3,53 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingEnd="@dimen/sixteen"
-    android:paddingStart="@dimen/sixteen">
+    android:padding="@dimen/sixteen">
 
-    <LinearLayout
-        android:id="@+id/ll_title"
+    <me.codeboy.android.aligntextview.AlignTextView
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <me.codeboy.android.aligntextview.AlignTextView
-            android:id="@+id/tv_title"
-            style="@style/QuestionTitleTextView"
-            android:text="SiberiaDante" />
-
-        <TextView
-            android:id="@+id/tv_answer_num"
-            style="@style/QuestionAnswerTextView"
-            android:text="回答666" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_vertical"
-        android:paddingBottom="@dimen/twenty_one"
-        android:paddingTop="@dimen/twenty_one">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:visibility="visible">
-
-            <TextView style="@style/AnswerTextView" />
-
-            <me.codeboy.android.aligntextview.AlignTextView
-                style="@style/AnswerSingleTextView"
-                android:text="使用NestedScrollView+ViewPager+RecyclerView+SmartRefreshLayout打造酷炫下拉视差效果并解决各种滑动冲突" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_no_answer"
-            android:visibility="gone"
-            style="@style/AnswerNoneTextView" />
-    </LinearLayout>
+        android:paddingBottom="@dimen/sixteen"
+        android:paddingTop="@dimen/sixteen"
+        android:textColor="@color/mainBlack"
+        android:textSize="@dimen/font_17"
+        android:textStyle="bold" />
 
 </LinearLayout>

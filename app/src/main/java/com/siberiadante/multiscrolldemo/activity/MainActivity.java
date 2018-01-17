@@ -2,6 +2,7 @@ package com.siberiadante.multiscrolldemo.activity;
 
 import android.content.Context;
 import android.database.ContentObserver;
+import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -9,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
-import android.os.Bundle;
 import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -21,6 +21,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
@@ -52,6 +53,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends BaseActivity {
@@ -348,5 +351,92 @@ public class MainActivity extends BaseActivity {
 //                viewPager.setLayoutParams(params);
             }
         });
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+    @OnClick({R.id.iv_header, R.id.iv_avatar, R.id.tv_username, R.id.tv_major, R.id.tv_gender, R.id.tv_level_num, R.id.tv_company, R.id.tv_position, R.id.tv_follow_num, R.id.tv_fans_num, R.id.tv_introduce, R.id.tv_authentication, R.id.tv_edit_info, R.id.tv_integral_num, R.id.tv_japanese_currency, R.id.tv_prestige, R.id.tv_friendliness, R.id.tv_label_one, R.id.tv_label_two, R.id.tv_label_three, R.id.tv_edit_label, R.id.collapse, R.id.magic_indicator, R.id.view_pager, R.id.scrollView, R.id.refreshLayout, R.id.iv_back, R.id.toolbar_avatar, R.id.toolbar_username, R.id.buttonBarLayout, R.id.iv_menu, R.id.toolbar, R.id.magic_indicator_title, R.id.fl_activity})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_header:
+                break;
+            case R.id.iv_avatar:
+                toast("头像");
+                break;
+            case R.id.tv_username:
+                break;
+            case R.id.tv_major:
+                break;
+            case R.id.tv_gender:
+                break;
+            case R.id.tv_level_num:
+                break;
+            case R.id.tv_company:
+                break;
+            case R.id.tv_position:
+                break;
+            case R.id.tv_follow_num:
+                break;
+            case R.id.tv_fans_num:
+                break;
+            case R.id.tv_introduce:
+                break;
+            case R.id.tv_authentication:
+                break;
+            case R.id.tv_edit_info:
+                toast("编辑资料");
+                break;
+            case R.id.tv_integral_num:
+                break;
+            case R.id.tv_japanese_currency:
+                break;
+            case R.id.tv_prestige:
+                break;
+            case R.id.tv_friendliness:
+                break;
+            case R.id.tv_label_one:
+                break;
+            case R.id.tv_label_two:
+                break;
+            case R.id.tv_label_three:
+                break;
+            case R.id.tv_edit_label:
+                break;
+            case R.id.collapse:
+                break;
+            case R.id.magic_indicator:
+                break;
+            case R.id.view_pager:
+                break;
+            case R.id.scrollView:
+                break;
+            case R.id.refreshLayout:
+                break;
+            case R.id.iv_back:
+                break;
+            case R.id.toolbar_avatar:
+                break;
+            case R.id.toolbar_username:
+                break;
+            case R.id.buttonBarLayout:
+                break;
+            case R.id.iv_menu:
+                break;
+            case R.id.toolbar:
+                break;
+            case R.id.magic_indicator_title:
+                break;
+            case R.id.fl_activity:
+                break;
+        }
+    }
+
+    private void toast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }
