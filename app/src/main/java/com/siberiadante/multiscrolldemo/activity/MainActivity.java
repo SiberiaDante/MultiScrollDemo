@@ -169,10 +169,12 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+        /**
+         * 判断是否是华为手机并且是否有虚拟导航键
+         */
         if (DeviceUtil.isHUAWEI() && DeviceUtil.checkDeviceHasNavigationBar(this.getApplicationContext())) {
             getContentResolver().registerContentObserver(Settings.System.getUriFor
                     ("navigationbar_is_min"), true, mNavigationStatusObserver);
-            Log.d(TAG, "initView: -------------huawei-----------------");
         }
         toolbar.post(new Runnable() {
             @Override
@@ -337,27 +339,17 @@ public class MainActivity extends BaseActivity {
         viewPager.setLayoutParams(params);
     }
 
+    /**
+     * 处理华为虚拟键显示隐藏问题导致屏幕高度变化，ViewPager的高度也需要重新测量
+     */
     private void dealWithHuaWei() {
         flActivity.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 dealWithViewPager();
                 flActivity.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-//                int heightDiff = flActivity.getRootView().getHeight() - flActivity.getHeight();
-//                Log.d(TAG, "----------------heightDiff------------:" + heightDiff);
-//                toolBarPositionY = toolbar.getHeight();
-//                ViewGroup.LayoutParams params = viewPager.getLayoutParams();
-//                params.height = ScreenUtil.getScreenHeightPx(getApplicationContext()) - toolBarPositionY - magicIndicator.getHeight() + 1;
-//                viewPager.setLayoutParams(params);
             }
         });
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
     }
 
     @OnClick({R.id.iv_header, R.id.iv_avatar, R.id.tv_username, R.id.tv_major, R.id.tv_gender, R.id.tv_level_num, R.id.tv_company, R.id.tv_position, R.id.tv_follow_num, R.id.tv_fans_num, R.id.tv_introduce, R.id.tv_authentication, R.id.tv_edit_info, R.id.tv_integral_num, R.id.tv_japanese_currency, R.id.tv_prestige, R.id.tv_friendliness, R.id.tv_label_one, R.id.tv_label_two, R.id.tv_label_three, R.id.tv_edit_label, R.id.collapse, R.id.magic_indicator, R.id.view_pager, R.id.scrollView, R.id.refreshLayout, R.id.iv_back, R.id.toolbar_avatar, R.id.toolbar_username, R.id.buttonBarLayout, R.id.iv_menu, R.id.toolbar, R.id.magic_indicator_title, R.id.fl_activity})
