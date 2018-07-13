@@ -1,26 +1,18 @@
 package com.siberiadante.multiscrolldemo.activity;
 
 import android.content.Context;
-import android.database.ContentObserver;
 import android.os.Bundle;
-import android.os.Handler;
-import android.provider.Settings;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -32,7 +24,6 @@ import com.siberiadante.multiscrolldemo.adapter.ComFragmentAdapter;
 import com.siberiadante.multiscrolldemo.fragment.ArticleFragment;
 import com.siberiadante.multiscrolldemo.fragment.DynamicFragment;
 import com.siberiadante.multiscrolldemo.fragment.QuestionFragment;
-import com.siberiadante.multiscrolldemo.util.DeviceUtil;
 import com.siberiadante.multiscrolldemo.util.ScreenUtil;
 import com.siberiadante.multiscrolldemo.util.StatusBarUtil;
 import com.siberiadante.multiscrolldemo.view.ColorFlipPagerTitleView;
@@ -53,80 +44,32 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends BaseActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
+
+    @BindView(R.id.iv_back)
+    ImageView ivBack;
+    @BindView(R.id.iv_menu)
+    ImageView ivMenu;
+
     @BindView(R.id.iv_header)
     ImageView ivHeader;
-    @BindView(R.id.iv_avatar)
-    CircleImageView ivAvatar;
-    @BindView(R.id.tv_username)
-    TextView tvUsername;
-    @BindView(R.id.tv_major)
-    TextView tvMajor;
-    @BindView(R.id.tv_gender)
-    TextView tvGender;
-    @BindView(R.id.tv_level_num)
-    TextView tvLevelNum;
-    @BindView(R.id.tv_company)
-    TextView tvCompany;
-    @BindView(R.id.tv_position)
-    TextView tvPosition;
-    @BindView(R.id.tv_follow_num)
-    TextView tvFollowNum;
-    @BindView(R.id.tv_fans_num)
-    TextView tvFansNum;
-    @BindView(R.id.tv_introduce)
-    TextView tvIntroduce;
-    @BindView(R.id.tv_authentication)
-    TextView tvAuthentication;
-    @BindView(R.id.tv_edit_info)
-    TextView tvEditInfo;
-    @BindView(R.id.tv_integral_num)
-    TextView tvIntegralNum;
-    @BindView(R.id.tv_japanese_currency)
-    TextView tvJapaneseCurrency;
-    @BindView(R.id.tv_prestige)
-    TextView tvPrestige;
-    @BindView(R.id.tv_friendliness)
-    TextView tvFriendliness;
-    @BindView(R.id.tv_label_one)
-    TextView tvLabelOne;
-    @BindView(R.id.tv_label_two)
-    TextView tvLabelTwo;
-    @BindView(R.id.tv_label_three)
-    TextView tvLabelThree;
-    @BindView(R.id.tv_edit_label)
-    TextView tvEditLabel;
-    @BindView(R.id.collapse)
-    CollapsingToolbarLayout collapse;
+    @BindView(R.id.refreshLayout)
+    SmartRefreshLayout refreshLayout;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
     @BindView(R.id.view_pager)
     ViewPager viewPager;
     @BindView(R.id.scrollView)
     JudgeNestedScrollView scrollView;
-    @BindView(R.id.refreshLayout)
-    SmartRefreshLayout refreshLayout;
-    @BindView(R.id.iv_back)
-    ImageView ivBack;
-    @BindView(R.id.toolbar_avatar)
-    CircleImageView toolbarAvatar;
-    @BindView(R.id.toolbar_username)
-    TextView toolbarUsername;
     @BindView(R.id.buttonBarLayout)
     ButtonBarLayout buttonBarLayout;
-    @BindView(R.id.iv_menu)
-    ImageView ivMenu;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.magic_indicator)
     MagicIndicator magicIndicator;
     @BindView(R.id.magic_indicator_title)
     MagicIndicator magicIndicatorTitle;
-    @BindView(R.id.fl_activity)
-    FrameLayout flActivity;
     int toolBarPositionY = 0;
     private int mOffset = 0;
     private int mScrollY = 0;
@@ -351,17 +294,23 @@ public class MainActivity extends BaseActivity {
 //            }
 //        });
 //    }
-    @OnClick({R.id.iv_header, R.id.iv_avatar, R.id.tv_edit_info})
+    @OnClick({R.id.tv_username, R.id.iv_avatar, R.id.tv_authentication, R.id.tv_edit_info, R.id.tv_position})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.iv_header:
-                toast("header");
+            case R.id.tv_username:
+                toast("SiberiaDante");
                 break;
             case R.id.iv_avatar:
                 toast("头像");
                 break;
+            case R.id.tv_authentication:
+                toast("头衔认证");
+                break;
             case R.id.tv_edit_info:
                 toast("编辑资料");
+                break;
+            case R.id.tv_position:
+                toast("中国·GitHub");
                 break;
         }
     }
