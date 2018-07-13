@@ -98,7 +98,7 @@ public class MineDynamicAdapter extends RecyclerArrayAdapter<MineDynamicBean> {
         @Override
         public void setData(MineDynamicBean data) {
             super.setData(data);
-            textView.setText(data.getContent());
+//            textView.setText(data.getContent());
         }
     }
 }

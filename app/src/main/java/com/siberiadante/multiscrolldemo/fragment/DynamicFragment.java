@@ -57,14 +57,15 @@ public class DynamicFragment extends LazyFragment {
         for (int i = 0; i < 20; i++) {
             final MineDynamicBean questionBean = new MineDynamicBean();
             questionBean.setContent("使用NestedScrollView+ViewPager+RecyclerView+SmartRefreshLayout打造酷炫下拉视差效果并解决各种滑动冲突" + i);
-            if (i % 1 == 0) {
+            if (i == 0) {
                 questionBean.setType(0);
-            }
-            if (i % 2 == 0) {
-                questionBean.setType(1);
-            }
-            if (i % 3 == 0) {
-                questionBean.setType(2);
+            } else {
+                if (i % 2 == 0) {
+                    questionBean.setType(1);
+                }
+                if (i % 3 == 0) {
+                    questionBean.setType(2);
+                }
             }
             data.add(questionBean);
         }

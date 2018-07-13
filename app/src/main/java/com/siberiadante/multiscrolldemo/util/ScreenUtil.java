@@ -21,8 +21,12 @@ public class ScreenUtil {
     public static int getScreenHeightPx(Context context) {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
-        windowManager.getDefaultDisplay().getMetrics(dm);
-        return dm.heightPixels;
+        if (windowManager != null) {
+//            windowManager.getDefaultDisplay().getMetrics(dm);
+            windowManager.getDefaultDisplay().getRealMetrics(dm);
+            return dm.heightPixels;
+        }
+        return 0;
 
     }
 }

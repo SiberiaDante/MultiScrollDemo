@@ -127,13 +127,23 @@ public class MainActivity extends BaseActivity {
     MagicIndicator magicIndicatorTitle;
     @BindView(R.id.fl_activity)
     FrameLayout flActivity;
-
+    int toolBarPositionY = 0;
     private int mOffset = 0;
     private int mScrollY = 0;
-    int toolBarPositionY = 0;
     private String[] mTitles = new String[]{"动态", "文章", "问答"};
     private List<String> mDataList = Arrays.asList(mTitles);
-
+//    private ContentObserver mNavigationStatusObserver = new ContentObserver(new Handler()) {
+//        @Override
+//        public void onChange(boolean selfChange) {
+//            dealWithHuaWei();
+//            int navigationBarIsMin = Settings.System.getInt(getContentResolver(), "navigationbar_is_min", 0);
+//            if (navigationBarIsMin == 1) {
+//                Log.d(TAG, "onChange: ------------------导航键隐藏了");
+//            } else {
+//                Log.d(TAG, "onChange: ------------------导航键显示了");
+//            }
+//        }
+//    };
 
     @Override
     public int setLayoutId() {
@@ -169,13 +179,11 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        /**
-         * 判断是否是华为手机并且是否有虚拟导航键
-         */
-        if (DeviceUtil.isHUAWEI() && DeviceUtil.checkDeviceHasNavigationBar(this.getApplicationContext())) {
-            getContentResolver().registerContentObserver(Settings.System.getUriFor
-                    ("navigationbar_is_min"), true, mNavigationStatusObserver);
-        }
+        //判断是否是华为手机并且是否有虚拟导航键
+//        if (DeviceUtil.isHUAWEI() && DeviceUtil.checkDeviceHasNavigationBar(this.getApplicationContext())) {
+//            getContentResolver().registerContentObserver(Settings.System.getUriFor
+//                    ("navigationbar_is_min"), true, mNavigationStatusObserver);
+//        }
         toolbar.post(new Runnable() {
             @Override
             public void run() {
@@ -222,14 +230,26 @@ public class MainActivity extends BaseActivity {
         buttonBarLayout.setAlpha(0);
         toolbar.setBackgroundColor(0);
 
+
+        viewPager.setAdapter(new ComFragmentAdapter(getSupportFragmentManager(), getFragments()));
+        viewPager.setOffscreenPageLimit(10);
+        initMagicIndicator();
+        initMagicIndicatorTitle();
+    }
+
+    private void dealWithViewPager() {
+        toolBarPositionY = toolbar.getHeight();
+        ViewGroup.LayoutParams params = viewPager.getLayoutParams();
+        params.height = ScreenUtil.getScreenHeightPx(getApplicationContext()) - toolBarPositionY - magicIndicator.getHeight() + 1;
+        viewPager.setLayoutParams(params);
+    }
+
+    private List<Fragment> getFragments() {
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(DynamicFragment.getInstance());
         fragments.add(ArticleFragment.getInstance());
         fragments.add(QuestionFragment.getInstance());
-        viewPager.setAdapter(new ComFragmentAdapter(getSupportFragmentManager(), fragments));
-        viewPager.setOffscreenPageLimit(10);
-        initMagicIndicator();
-        initMagicIndicatorTitle();
+        return fragments;
     }
 
     private void initMagicIndicator() {
@@ -319,111 +339,29 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    private ContentObserver mNavigationStatusObserver = new ContentObserver(new Handler()) {
-        @Override
-        public void onChange(boolean selfChange) {
-            dealWithHuaWei();
-//            int navigationBarIsMin = Settings.System.getInt(getContentResolver(), "navigationbar_is_min", 0);
-//            if (navigationBarIsMin == 1) {
-//                Log.d(TAG, "onChange: ------------------导航键隐藏了");
-//            } else {
-//                Log.d(TAG, "onChange: ------------------导航键显示了");
-//            }
-        }
-    };
-
-    private void dealWithViewPager() {
-        toolBarPositionY = toolbar.getHeight();
-        ViewGroup.LayoutParams params = viewPager.getLayoutParams();
-        params.height = ScreenUtil.getScreenHeightPx(getApplicationContext()) - toolBarPositionY - magicIndicator.getHeight() + 1;
-        viewPager.setLayoutParams(params);
-    }
-
     /**
      * 处理华为虚拟键显示隐藏问题导致屏幕高度变化，ViewPager的高度也需要重新测量
      */
-    private void dealWithHuaWei() {
-        flActivity.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                dealWithViewPager();
-                flActivity.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-            }
-        });
-    }
-
-    @OnClick({R.id.iv_header, R.id.iv_avatar, R.id.tv_username, R.id.tv_major, R.id.tv_gender, R.id.tv_level_num, R.id.tv_company, R.id.tv_position, R.id.tv_follow_num, R.id.tv_fans_num, R.id.tv_introduce, R.id.tv_authentication, R.id.tv_edit_info, R.id.tv_integral_num, R.id.tv_japanese_currency, R.id.tv_prestige, R.id.tv_friendliness, R.id.tv_label_one, R.id.tv_label_two, R.id.tv_label_three, R.id.tv_edit_label, R.id.collapse, R.id.magic_indicator, R.id.view_pager, R.id.scrollView, R.id.refreshLayout, R.id.iv_back, R.id.toolbar_avatar, R.id.toolbar_username, R.id.buttonBarLayout, R.id.iv_menu, R.id.toolbar, R.id.magic_indicator_title, R.id.fl_activity})
+//    private void dealWithHuaWei() {
+//        flActivity.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//            @Override
+//            public void onGlobalLayout() {
+//                dealWithViewPager();
+//                flActivity.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+//            }
+//        });
+//    }
+    @OnClick({R.id.iv_header, R.id.iv_avatar, R.id.tv_edit_info})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_header:
+                toast("header");
                 break;
             case R.id.iv_avatar:
                 toast("头像");
                 break;
-            case R.id.tv_username:
-                break;
-            case R.id.tv_major:
-                break;
-            case R.id.tv_gender:
-                break;
-            case R.id.tv_level_num:
-                break;
-            case R.id.tv_company:
-                break;
-            case R.id.tv_position:
-                break;
-            case R.id.tv_follow_num:
-                break;
-            case R.id.tv_fans_num:
-                break;
-            case R.id.tv_introduce:
-                break;
-            case R.id.tv_authentication:
-                break;
             case R.id.tv_edit_info:
                 toast("编辑资料");
-                break;
-            case R.id.tv_integral_num:
-                break;
-            case R.id.tv_japanese_currency:
-                break;
-            case R.id.tv_prestige:
-                break;
-            case R.id.tv_friendliness:
-                break;
-            case R.id.tv_label_one:
-                break;
-            case R.id.tv_label_two:
-                break;
-            case R.id.tv_label_three:
-                break;
-            case R.id.tv_edit_label:
-                break;
-            case R.id.collapse:
-                break;
-            case R.id.magic_indicator:
-                break;
-            case R.id.view_pager:
-                break;
-            case R.id.scrollView:
-                break;
-            case R.id.refreshLayout:
-                break;
-            case R.id.iv_back:
-                break;
-            case R.id.toolbar_avatar:
-                break;
-            case R.id.toolbar_username:
-                break;
-            case R.id.buttonBarLayout:
-                break;
-            case R.id.iv_menu:
-                break;
-            case R.id.toolbar:
-                break;
-            case R.id.magic_indicator_title:
-                break;
-            case R.id.fl_activity:
                 break;
         }
     }
