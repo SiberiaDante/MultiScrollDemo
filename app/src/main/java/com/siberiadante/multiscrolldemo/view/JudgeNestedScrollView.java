@@ -22,11 +22,11 @@ public class JudgeNestedScrollView extends NestedScrollView {
     private int scaledTouchSlop;
 
     public JudgeNestedScrollView(Context context) {
-        super(context,null);
+        super(context, null);
     }
 
     public JudgeNestedScrollView(Context context, AttributeSet attrs) {
-        super(context, attrs,0);
+        super(context, attrs, 0);
     }
 
     public JudgeNestedScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -51,14 +51,14 @@ public class JudgeNestedScrollView extends NestedScrollView {
                 xLast = curX;
                 yLast = curY;
                 Log.e("SiberiaDante", "xDistance ：" + xDistance + "---yDistance:" + yDistance);
-                return !(xDistance > yDistance || yDistance < scaledTouchSlop) && isNeedScroll;
+                return !(xDistance >= yDistance || yDistance < scaledTouchSlop) && isNeedScroll;
 
         }
         return super.onInterceptTouchEvent(ev);
     }
 
     /*
-    改方法用来处理NestedScrollView是否拦截滑动事件
+    该方法用来处理NestedScrollView是否拦截滑动事件
      */
     public void setNeedScroll(boolean isNeedScroll) {
         this.isNeedScroll = isNeedScroll;
