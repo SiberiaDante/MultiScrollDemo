@@ -9,3 +9,6 @@
 ## 优化修复
 * 华为虚拟键显示隐藏会导致测量的屏幕宽高发生变化，已修复并做了优化处理
 * 修复JudgeNestedScrollView的点击事件
+## 其他方案
+* [不用涉及到各种冲突常规打造酷炫下拉视差效果SmartRefreshLayout+ViewPager+RecyclerView](https://github.com/LPTim/Stop-master)
+* [使用Design+自定义Behavior实现](https://github.com/JmStefanAndroid/EasyBehavior)
